@@ -6,7 +6,11 @@ function readFileString(path) {
 }
 
 const token = readFileString("token.txt");
-const channel = readFileString("channel.txt");
+const channel = process.argv[2];
+if(!channel) {
+  console.error("Usage: node index.js <channel id>");
+  process.exit(1);
+}
 
 const headers = {authorization: token};
 
